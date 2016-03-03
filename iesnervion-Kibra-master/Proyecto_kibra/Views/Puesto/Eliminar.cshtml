@@ -1,0 +1,48 @@
+﻿@model Entidades.Puesto
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Puesto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdPuesto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdPuesto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NombrePue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombrePue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DescPue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DescPue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Salario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Salario)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Volver al listado", "Listado")
+    </p>
+}

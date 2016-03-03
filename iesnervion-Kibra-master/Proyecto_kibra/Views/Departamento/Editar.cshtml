@@ -1,0 +1,47 @@
+﻿@model Entidades.Departamento
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+  
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>Departamento</legend>
+    
+            @Html.HiddenFor(model => model.IdDepartamento)
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NombreDep)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.NombreDep)
+                @Html.ValidationMessageFor(model => model.NombreDep)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DescDep)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DescDep)
+                @Html.ValidationMessageFor(model => model.DescDep)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Telefono)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Telefono)
+                @Html.ValidationMessageFor(model => model.Telefono)
+            </div>
+    
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Volver al listado", "Listado")
+    </div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Entidades.Puesto>
+
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+
+<h2>Listado</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Nuevo")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombrePue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescPue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombrePue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescPue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { @id=item.IdPuesto }) |
+            @Html.ActionLink("Detalles", "Detalles", new { @id=item.IdPuesto }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { @id=item.IdPuesto })
+        </td>
+    </tr>
+}
+
+</table>

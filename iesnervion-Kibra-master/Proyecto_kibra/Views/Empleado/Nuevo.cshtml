@@ -1,0 +1,153 @@
+﻿@model Proyecto_kibra.Models.EmpleadoModel
+
+@{
+    ViewBag.Title = "Nuevo";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+<script src="~/Resources/js/ajax_ciudad.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Nuevo <small>empleado</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-user"></i>  <a href="/Empleado/Listado">Empleado</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Nuevo
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Nuevo", "Empleado", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+
+            @Html.HiddenFor(model => model.Empleado.IdEmpleado)
+
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.DniEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.DniEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.DniEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.DniEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.NombreEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.NombreEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.NombreEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.NombreEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.ApellidoEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.ApellidoEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.ApellidoEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.ApellidoEmp)
+            </div>
+
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.FechaNac)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.FechaNac, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.FechaNac) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.FechaNac)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.DireccionEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.DireccionEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.DireccionEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.DireccionEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.TelefonoEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.TelefonoEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.TelefonoEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.TelefonoEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.EmailEmp)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Empleado.EmailEmp, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.EmailEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.EmailEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.DepartamentoEmp)</label>
+                <div class="col-sm-5">
+                    
+                    @Html.DropDownListFor(model => model.DepartamentoId, new SelectList(Model.Departamentos, "IdDepartamento", "NombreDep"), new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.DepartamentoEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.DepartamentoEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.Empleado.PuestoEmp)</label>
+                <div class="col-sm-5">
+                    
+                     @Html.DropDownListFor(model => model.PuestoId, new SelectList(Model.Puestos, "IdPuesto", "NombrePue"), new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.PuestoEmp) })
+                </div>
+                @Html.ValidationMessageFor(model => model.Empleado.PuestoEmp)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@Html.DisplayNameFor(model => model.ProvinciaId)</label>
+                <div class="col-sm-5">
+                   
+                     @Html.DropDownListFor(model => model.ProvinciaId, new SelectList(Model.Provincias, "IdProvincia", "NombreProv") ,new {  @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.ProvinciaId), @id="cmbProvincias", @onchange="cambiarCiudades()"})
+                </div>
+                @Html.ValidationMessageFor(model => model.ProvinciaId)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Ciudades</label>
+                <div class="col-sm-5">
+                    <select id="cmbCiudades" name="ciudad" disabled class="form-control"></select>
+                    @*@Html.DropDownListFor(model => model.Empleado.CiudadEmp.IdCiudad, null ,new {  @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.Empleado.CiudadEmp), @id="cmbCiudades",@disabled="disabled"})*@
+                </div>
+                @Html.ValidationMessageFor(model => model.CiudadId)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.usuario, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.login.Usuario) })
+                </div>
+                @Html.ValidationMessageFor(model => model.usuario)
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-5">
+                    @Html.PasswordFor(model => model.passwd, new { @class = "form-control", @placeholder = @Html.DisplayNameFor(model => model.login.Passwd) })
+                </div>
+                @Html.ValidationMessageFor(model => model.passwd)
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

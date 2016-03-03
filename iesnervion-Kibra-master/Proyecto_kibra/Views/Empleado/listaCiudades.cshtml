@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Entidades.Ciudad>
+<?xml version="1.0" encoding="UTF-8"  ?>
+
+
+
+<ciudades>
+
+    @foreach (var item in Model)
+    {
+        <ciudad id="@item.IdCiudad">@item.NombreCiu</ciudad>
+    }                                            
+
+    </ciudades>

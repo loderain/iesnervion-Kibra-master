@@ -1,0 +1,2 @@
+﻿Aqui se almacenarán las imagenes que requiera el proyecto. Solo imagenes de estilo. 
+Nada de imágenes de perfil de empleado, ni de producto, ni nada que tenga que ver con la información.

@@ -1,0 +1,44 @@
+﻿@model Entidades.Departamento
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+
+  <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Departamento</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IdDepartamento)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IdDepartamento)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NombreDep)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NombreDep)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DescDep)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DescDep)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Telefono)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Telefono)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Volver al listado", "Listado")
+        </p>
+    }

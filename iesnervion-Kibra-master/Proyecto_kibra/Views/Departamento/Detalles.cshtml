@@ -1,0 +1,41 @@
+﻿@model Entidades.Departamento
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutMenu.cshtml";
+}
+
+   <fieldset>
+        <legend>Departamento</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IdDepartamento)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IdDepartamento)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NombreDep)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NombreDep)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DescDep)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DescDep)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Telefono)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Telefono)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { @id=Model.IdDepartamento }) |
+        @Html.ActionLink("Volver al listado", "Listado")
+    </p>
